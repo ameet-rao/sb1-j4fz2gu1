@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+---
+
+<Layout title="Project Catalog - Home">
+  <main>
+    <div class="hero">
+      <h1>Welcome to Project Catalog</h1>
+      <p>Discover and explore our collection of innovative projects</p>
+      <a href="/projects" class="cta-button">View Projects</a>
+    </div>
+    <div class="sample-project">
+      <img src="/sample-project.jpg" alt="Sample Project Preview" />
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 4rem 2rem;
+    max-width: 1200px;
+  }
+
+  .hero {
+    text-align: center;
+    color: white;
+    margin-bottom: 4rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: #60a5fa;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.2s;
+  }
+
+  .cta-button:hover {
+    background: #3b82f6;
+  }
+
+  .sample-project {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .sample-project img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+</style>

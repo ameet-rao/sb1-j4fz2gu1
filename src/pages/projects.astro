@@ -1,0 +1,58 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+---
+
+<Layout title="Projects - Project Catalog">
+  <main>
+    <h1>Our Projects</h1>
+    <div class="project-grid">
+      {projects.map((project) => (
+        <ProjectCard
+          title={project.data.title}
+          description={project.data.description}
+          tag={project.data.tag}
+          slug={project.slug}
+        />
+      ))}
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 2rem;
+    max-width: 1200px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .project-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .project-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

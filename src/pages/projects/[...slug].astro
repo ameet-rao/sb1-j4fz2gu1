@@ -1,0 +1,69 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map(project => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { title, description, tag, googleDocUrl } = project.data;
+---
+
+<Layout title={title}>
+  <main>
+    <div class="project-header">
+      <span class="tag">{tag}</span>
+      <h1>{title}</h1>
+      <p>{description}</p>
+    </div>
+    <div class="doc-container">
+      <iframe
+        src={googleDocUrl}
+        frameborder="0"
+        width="100%"
+        height="800"
+        allowfullscreen="true"
+        mozallowfullscreen="true"
+        webkitallowfullscreen="true"
+      ></iframe>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 2rem;
+    max-width: 1200px;
+  }
+
+  .project-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: white;
+  }
+
+  .tag {
+    background: #e2e8f0;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    color: #1a202c;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin: 1rem 0;
+  }
+
+  .doc-container {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+</style>

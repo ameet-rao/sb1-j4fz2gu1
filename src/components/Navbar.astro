@@ -1,0 +1,63 @@
+---
+const navItems = [
+  { href: '/', text: 'Home' },
+  { href: '/projects', text: 'Projects' },
+  { href: '/contact', text: 'Contact' },
+];
+---
+
+<nav>
+  <div class="nav-content">
+    <a href="/" class="logo">Project Catalog</a>
+    <div class="nav-links">
+      {navItems.map(item => (
+        <a href={item.href} class={Astro.url.pathname === item.href ? 'active' : ''}>
+          {item.text}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<style>
+  nav {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover, .nav-links a.active {
+    color: #60a5fa;
+  }
+</style>

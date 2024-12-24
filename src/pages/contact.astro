@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact - Project Catalog">
+  <main>
+    <h1>Get in Touch</h1>
+    <div class="contact-container">
+      <p>Have questions about our projects? We'd love to hear from you!</p>
+      <form class="contact-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 2rem;
+    max-width: 800px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  .contact-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 2rem;
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .contact-form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  label {
+    display: block;
+    color: white;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-family: 'Inter', sans-serif;
+  }
+
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: #60a5fa;
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background: #60a5fa;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  button:hover {
+    background: #3b82f6;
+  }
+</style>

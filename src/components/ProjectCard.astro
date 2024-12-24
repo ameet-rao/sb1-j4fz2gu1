@@ -1,0 +1,85 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  tag: string;
+  slug: string;
+}
+
+const { title, description, tag, slug } = Astro.props;
+
+// Convert tag to lowercase and remove spaces for CSS variable lookup
+const tagClass = tag.toLowerCase().replace(/\s+/g, '-');
+---
+
+<div class="project-card">
+  <div class="tag" data-tag={tagClass}>{tag}</div>
+  <h2>{title}</h2>
+  <p>{description}</p>
+  <a href={`/projects/${slug}`}>View Details</a>
+</div>
+
+<style>
+  .project-card {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    position: relative;
+    transition: transform 0.2s;
+  }
+
+  .project-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .tag {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .tag[data-tag="energy"] {
+    background: var(--tag-colors-energy);
+  }
+
+  .tag[data-tag="quantum"] {
+    background: var(--tag-colors-quantum);
+  }
+
+  .tag[data-tag="demo"] {
+    background: var(--tag-colors-demo);
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 700;
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0.5rem 0 1rem;
+  }
+
+  a {
+    display: inline-block;
+    background: #60a5fa;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s;
+    font-weight: 700;
+  }
+
+  a:hover {
+    background: #3b82f6;
+  }
+</style>
